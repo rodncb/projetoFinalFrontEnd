@@ -1,0 +1,226 @@
+.main {
+  min-height: calc(100vh - var(--header-height));
+}
+
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #5856eb 100%);
+  color: white;
+  padding: var(--spacing-4xl) var(--spacing-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="1"/></g></svg>');
+  pointer-events: none;
+}
+
+.hero__container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xl);
+  line-height: var(--line-height-tight);
+  font-family: var(--font-family-display);
+}
+
+.hero__description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--spacing-2xl);
+  opacity: 0.9;
+  font-weight: var(--font-weight-medium);
+}
+
+.hero__cta {
+  display: inline-block;
+}
+
+.features {
+  padding: var(--spacing-4xl) var(--spacing-lg);
+  background: var(--color-surface-secondary);
+}
+
+.features__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-2xl);
+}
+
+.feature {
+  background: var(--color-surface);
+  padding: var(--spacing-2xl);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.feature:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.feature__icon {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.feature__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-display);
+}
+
+.feature__description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.about {
+  padding: 80px 20px;
+  background-color: white;
+}
+
+.about__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about__title {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #1f2937;
+}
+
+.about__text {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  color: #4b5563;
+}
+
+.about__tech-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.about__tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+}
+
+.about__tech-list li {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 16px;
+  }
+
+  .hero__title {
+    font-size: 36px;
+  }
+
+  .hero__description {
+    font-size: 16px;
+  }
+
+  .features {
+    padding: 60px 16px;
+  }
+
+  .features__title {
+    font-size: 28px;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .feature {
+    padding: 24px;
+  }
+
+  .about {
+    padding: 60px 16px;
+  }
+
+  .about__title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 40px 12px;
+  }
+
+  .hero__title {
+    font-size: 28px;
+  }
+
+  .hero__description {
+    font-size: 14px;
+  }
+
+  .features {
+    padding: 40px 12px;
+  }
+
+  .about {
+    padding: 40px 12px;
+  }
+
+  .about__tech-list {
+    justify-content: center;
+  }
+}

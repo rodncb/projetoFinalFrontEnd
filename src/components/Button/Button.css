@@ -1,0 +1,211 @@
+/* Apple-inspired Button Component */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: var(--font-size-base);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  min-height: 44px; /* Apple touch target */
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Primary variant - Apple blue */
+.button_variant_primary {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.button_variant_primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.button_variant_primary:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Secondary variant - Apple gray */
+.button_variant_secondary {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-800);
+  border: 1px solid var(--color-neutral-200);
+  box-shadow: var(--shadow-sm);
+}
+
+.button_variant_secondary:hover:not(:disabled) {
+  background: var(--color-neutral-200);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Ghost variant - Transparent with border */
+.button_variant_outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.button_variant_outline:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Ghost variant - No border */
+.button_variant_ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+}
+
+.button_variant_ghost:hover:not(:disabled) {
+  background: rgba(0, 122, 255, 0.1);
+}
+
+/* Success variant */
+.button_variant_success {
+  background: var(--color-success);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.button_variant_success:hover:not(:disabled) {
+  background: #28a745;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Danger variant */
+.button_variant_danger {
+  background: var(--color-error);
+  color: white;
+  box-shadow: var(--shadow-sm);
+}
+
+.button_variant_danger:hover:not(:disabled) {
+  background: #d73527;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Size variants */
+.button_size_small {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+  min-height: 36px;
+}
+
+.button_size_large {
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-lg);
+  min-height: 52px;
+}
+
+/* Apple-style loading state */
+.button_loading {
+  pointer-events: none;
+}
+
+.button_loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: button-loading 1s linear infinite;
+}
+
+@keyframes button-loading {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Apple-style focus ring */
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Apple-style ripple effect */
+.button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.button:active::after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: all 0s;
+}
+
+/* Responsividade Apple-style */
+@media (max-width: 768px) {
+  .button {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-2) var(--spacing-5);
+    min-height: 40px;
+  }
+
+  .button_size_small {
+    min-height: 32px;
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .button_size_large {
+    min-height: 48px;
+    padding: var(--spacing-3) var(--spacing-6);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Dark mode ready */
+@media (prefers-color-scheme: dark) {
+  .button_variant_secondary {
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+    border-color: var(--color-neutral-700);
+  }
+
+  .button_variant_ghost:hover:not(:disabled) {
+    background: rgba(0, 122, 255, 0.2);
+  }
+}
